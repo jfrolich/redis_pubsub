@@ -35,6 +35,8 @@ defmodule RedisPubsub.Mixfile do
     [
       {:phoenix, "~> 1.3.0"},
       {:phoenix_pubsub, "~> 1.0"},
+      {:phoenix_pubsub_redis, "~> 2.1.0"},
+      {:redix, "~> 0.6.1", override: true},
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},

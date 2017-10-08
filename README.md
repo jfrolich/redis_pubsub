@@ -1,20 +1,14 @@
 # RedisPubsub
 
-To start your Phoenix server:
+Test case for https://github.com/phoenixframework/phoenix_pubsub_redis/issues/31#issuecomment-334873843
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+use the following commands in `iex -S mix` to reproduce:
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+```
+iex(1)> Phoenix.PubSub.subscribe(RedisPubsub.PubSub, "test")
+:ok
+iex(2)> Phoenix.PubSub.broadcast(RedisPubsub.PubSub, "test", "bla")
+:ok
+iex(3)> flush
+:ok
+```

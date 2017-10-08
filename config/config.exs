@@ -14,8 +14,12 @@ config :redis_pubsub, RedisPubsubWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "clldmCL9aQnrli5Yx2a8PTyV9KRMObR66N1S80b87GEfz9sFs6ArBuJJnvlVqGk0",
   render_errors: [view: RedisPubsubWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: RedisPubsub.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [
+    name: RedisPubsub.PubSub,
+    adapter: Phoenix.PubSub.Redis,
+    node_name: "dev_node",
+    host: "127.0.0.1"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
